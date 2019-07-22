@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.we.security.dao.CommunityDaoTest">
+
+    <select id="selectAll" resultType="Community">
+        SELECT
+          a.c_id,
+          a.c_name,
+          a.c_site,
+          a.c_flag
+        FROM
+        community AS a
+    </select>
+</mapper>
