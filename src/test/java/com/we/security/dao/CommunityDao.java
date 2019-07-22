@@ -25,10 +25,10 @@ public class CommunityDao {
     private CommunityDaoTest communityDaoTest;
 
     @Test
-    public void testSelectAll(){
+    public void testSelectAll() {
         List<Community> communities = communityDaoTest.selectAll();
         for (Community com : communities) {
-            System.out.println(com.getCName());
+            System.out.println(com.getCName() + ":" + com.getCId());
         }
     }
 }
