@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.we.security.dao.Video">
+
+    <select id="selectAllVideo" resultType="Video">
+     SELECT
+        v_id,
+        v_name,
+        n_id,
+        v_upload,
+        v_alter,
+        v_flag
+FROM
+	video
+    </select>
+
+    <insert id="addVideo">
+INSERT INTO video (
+            v_name,
+            n_id,
+            v_upload,
+            v_alter,
+            v_flag)
+	VALUES(
+	#{v_name}),
+    #{n_id},
+    #{v_upload},
+    #{v_alter},
+    #{v_flag}
+
+    );
+
+    </insert>
+
+    <delete id="deleteVideo">
+        DELETE
+FROM
+	video
+WHERE
+	v_id =#{v_id};
+
+
+    </delete>
+
+
+    <update id="updateVideo" parameterType="com.we.security.entity.Video">
+        UPDATE video
+        <set>
+            <if test="v_name!= null">
+                v_name = #{v_name},
+            </if>
+            <if test="n_id!= null">
+                n_id = #{n_id},
+            </if>
+            <if test="v_upload!=null">
+                v_upload = #{v_upload},
+            </if>
+            <if test="v_alter!=null">
+                v_alter = #{v_alter},
+            </if>
+            <if test="v_flag!=null">
+                v_flag = #{v_flag},
+            </if>
+            <if test="n_id!=null">
+                n_id = #{n_id},
+            </if>
+            <if test="u_flag!=null">
+                u_flag = #{u_flag}
+            </if>
+
+
+        </set>
+        WHERE v_id = #{v_id};
+    </update>
+</mapper>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.we.security.dao.UserDao">
+
+    <select id="selectAllUser" resultType="User">
+     SELECT
+	u.u_id,
+	u.u_email,
+	u.u_pwd,
+	u.u_name,
+	u.u_sex,
+	u.u_age,
+	u.n_id,
+	u.u_flag
+FROM
+	USER AS u
+    </select>
+
+    <insert id="addUser">
+INSERT INTO user (
+	u_email,
+	u_pwd,
+	u_name,
+	u_sex,
+	u_age,
+	n_id,
+	u_flag)
+	VALUES(
+	#{u_email}),
+    #{u_pwd},
+    #{u_name},
+    #{u_sex},
+    #{u_age},
+    #{n_id},
+    #{u_flag}
+    );
+
+    </insert>
+
+    <delete id="deleteUser">
+        DELETE
+FROM
+	USER
+WHERE
+	u_id =#{u_id};
+
+
+    </delete>
+
+
+    <update id="updateUser" parameterType="com.we.security.entity.User">
+        UPDATE user
+        <set>
+            <if test="u_email!=null">
+                u_email = #{u_email},
+            </if>
+            <if test="u_pwd!= null">
+                u_pwd = #{u_pwd},
+            </if>
+            <if test="u_name!= null ">
+                u_name = #{u_name},
+            </if>
+            <if test="u_sex!= null">
+                u_sex = #{u_sex},
+            </if>
+            <if test="u_age!= null">
+                u_age = #{u_age},
+            </if>
+             <if test="n_id!=null">
+                 n_id = #{n_id},
+            </if>
+              <if test="u_flag!=null">
+                  u_flag = #{u_flag}
+            </if>
+
+
+        </set>
+        WHERE u_id = #{u_id};
+    </update>
+</mapper>
